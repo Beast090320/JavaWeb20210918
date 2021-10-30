@@ -18,18 +18,18 @@ import service.DrinkService;
 
 @WebServlet(value = "/servlet/drink")
 public class DrinkHttpServlet extends HttpServlet {
-	
+
 	private DrinkService drinkService = new DrinkService();
-	
+
 	// 訂單明細列表
 	private List<Map> list = new ArrayList<>();
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String deleteRowId = req.getParameter("deleteRowId");
 		String updateRowId = req.getParameter("updateRowId");
 		// 刪除程序
-		if(deleteRowId != null) {
+		if (deleteRowId != null) {
 			// 進行刪單處理
 			// 取得單號
 			int index = Integer.parseInt(deleteRowId);
@@ -37,14 +37,14 @@ public class DrinkHttpServlet extends HttpServlet {
 			Map item = list.get(index);
 			// 回滾庫存
 			int id = Integer.parseInt(item.get("id").toString());
-			int amount = Integer.parseInt(item.get("amount").toString());		
+			int amount = Integer.parseInt(item.get("amount").toString());
 			drinkService.updateStock(id, amount * -1);
 			// 移除訂單
 			list.remove(index);
 		}
-		
-		//修改程序
-		if(updateRowId != null) {
+
+		// 修改程序
+		if (updateRowId != null) {
 			// 進行修改處理
 			// 取得修改數量
 			int updateAmount = Integer.parseInt(req.getParameter("updateAmount"));
@@ -62,7 +62,7 @@ public class DrinkHttpServlet extends HttpServlet {
 			int id = Integer.parseInt(item.get("id").toString());
 			drinkService.updateStock(id, rollbackAmount);
 		}
-		
+
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/drink_form.jsp");
 		req.setAttribute("list", list);
 		req.setAttribute("drinks", drinkService.queryAll());
@@ -73,7 +73,7 @@ public class DrinkHttpServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Integer id = Integer.parseInt(req.getParameter("id"));
 		Integer amount = Integer.parseInt(req.getParameter("amount"));
-		
+
 		// 根據 id 取得 drink 物件
 		Drink drink = drinkService.getDrink(id);
 		// map 裡面存放的就是要顯示的訂單明細
@@ -84,7 +84,7 @@ public class DrinkHttpServlet extends HttpServlet {
 		map.put("subtotal", amount * drink.getPrice());
 		// 庫存檢查/更新
 		boolean check = drinkService.updateStock(id, amount);
-		if(check) {
+		if (check) {
 			map.put("memo", "訂購成功");
 			map.put("flag", "true");
 		} else {
@@ -93,11 +93,11 @@ public class DrinkHttpServlet extends HttpServlet {
 		}
 		// 加入到訂單明細列表
 		list.add(map);
-		
+
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/drink_form.jsp");
 		req.setAttribute("list", list);
 		req.setAttribute("drinks", drinkService.queryAll());
 		rd.forward(req, resp);
 	}
-	
+
 }

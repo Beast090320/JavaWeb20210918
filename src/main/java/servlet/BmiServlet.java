@@ -18,11 +18,10 @@ public class BmiServlet extends GenericServlet {
 		// 2.處理與計算
 		double h = Double.parseDouble(height);
 		double w = Double.parseDouble(weight);
-		double bmi = w / Math.pow(h/100, 2);
+		double bmi = w / Math.pow(h / 100, 2);
 		// 3.回應資料
 		res.getWriter().print("BMI = " + bmi);
-		
+
 	}
 
-	
 }

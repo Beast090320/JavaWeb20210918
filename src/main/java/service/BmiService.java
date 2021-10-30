@@ -7,10 +7,10 @@ public class BmiService {
 		double bmi = getBmi(h, w);
 		return bmi;
 	}
-	
+
 	public double getBmi(double h, double w) {
-		double bmi = w / Math.pow(h/100, 2);
+		double bmi = w / Math.pow(h / 100, 2);
 		return bmi;
 	}
-	
+
 }

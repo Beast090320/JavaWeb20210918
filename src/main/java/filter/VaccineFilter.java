@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 // 請實作一個 VaccineFilter 可以過濾正確的名稱
 // 若不正確則印出 "Vaccine name Error"
 
-@WebFilter(value = {"/servlet/covid/append"})
+@WebFilter(value = { "/servlet/covid/append" })
 public class VaccineFilter extends HttpFilter {
 	// 合法疫苗名稱
 	private List<String> vaccineNames = Arrays.asList("AZ", "BNT", "MVC");
@@ -23,17 +23,15 @@ public class VaccineFilter extends HttpFilter {
 	@Override
 	protected void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain chain)
 			throws IOException, ServletException {
-		
+
 		String vaccine = req.getParameter("vaccine");
-		if(vaccineNames.contains(vaccine)) {
+		if (vaccineNames.contains(vaccine)) {
 			chain.doFilter(req, resp);
 		} else {
 			PrintWriter out = resp.getWriter();
 			out.print("Stop: Vaccine name error");
 		}
-		
+
 	}
-	
-	
-	
+
 }

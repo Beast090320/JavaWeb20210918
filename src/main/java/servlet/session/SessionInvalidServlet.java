@@ -9,20 +9,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet(value = {"/servlet/session/invalid"})
+@WebServlet(value = { "/servlet/session/invalid" })
 public class SessionInvalidServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		HttpSession session = req.getSession(false);
-		
-		if(session == null) {
+
+		if (session == null) {
 			resp.getWriter().println("None session");
 		} else {
 			session.invalidate();
 			resp.getWriter().println("Session invalidate OK");
 		}
 	}
-	
+
 }

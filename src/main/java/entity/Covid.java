@@ -3,11 +3,11 @@ package entity;
 public class Covid {
 	private String id;
 	private String vaccine;
-	
+
 	public Covid() {
-		
+
 	}
-	
+
 	public Covid(String id, String vaccine) {
 		this.id = id;
 		this.vaccine = vaccine;
@@ -33,7 +33,5 @@ public class Covid {
 	public String toString() {
 		return "Covid [id=" + id + ", vaccine=" + vaccine + "]";
 	}
-	
-	
-	
+
 }

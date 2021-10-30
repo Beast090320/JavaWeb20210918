@@ -16,17 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/servlet/car")
 public class CarServlet extends HttpServlet {
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		File file = new File("c:/upload");
 		String[] fileNames = file.list();
-		
+
 		RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/view/car_form.jsp");
 		req.setAttribute("fileNames", fileNames);
 		rd.forward(req, resp);
-		
+
 	}
 
 	@Override
@@ -34,7 +34,7 @@ public class CarServlet extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
-		
+
 		PrintWriter out = resp.getWriter();
 		// 顯示 HTTP 文件 Header(Part 2)
 		Enumeration headerNames = req.getHeaderNames();
@@ -49,10 +49,10 @@ public class CarServlet extends HttpServlet {
 		// 顯示 HTTP 文件內容(Part 4)
 		InputStreamReader isr = new InputStreamReader(req.getInputStream()); // 取得 HTTP 文件串流
 		char[] buffer = new char[1];
-		while(isr.read(buffer) != -1) {
+		while (isr.read(buffer) != -1) {
 			out.println(new String(buffer));
 		}
-		
+
 	}
-	
+
 }

@@ -22,13 +22,11 @@ public class WaterMarkerFilter extends HttpFilter {
 		// 得到 html 資料
 		String html = myResponse.getResult();
 		// 加上浮水印
-		String ws = "background='" + getServletContext().getContextPath() + "/example.jpg'"; 
+		String ws = "background='" + getServletContext().getContextPath() + "/example.jpg'";
 		html = html.replaceAll("<body", "<body " + ws);
 		// 回寫給 client 端
 		resp.getWriter().print(html);
-		
+
 	}
-	
-	
-	
+
 }

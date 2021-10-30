@@ -69,14 +69,14 @@ public class BookService {
 		Optional<Book> opt = books.stream().filter(b -> b.getId().equals(id)).findAny();
 		if (opt.isPresent()) {
 			Book book = opt.get();
-			if(books.remove(book)) {
+			if (books.remove(book)) {
 				return new Gson().toJson(books);
-			}else {
+			} else {
 				return "delete error";
 			}
-		}else {
+		} else {
 			return "delete error: od not found";
 		}
-		
+
 	}
 }

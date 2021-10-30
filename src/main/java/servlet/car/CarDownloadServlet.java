@@ -18,23 +18,23 @@ public class CarDownloadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String car_photo = req.getParameter("car_photo");
 		// 1. 取得圖檔名稱
-		if(car_photo == null) {
+		if (car_photo == null) {
 			resp.getWriter().print("Please input car_photo");
 			return;
 		}
-		
+
 		// 2. 取得圖檔路徑
 		File file = new File("c:/upload/" + car_photo);
-		if(!file.exists()) {
+		if (!file.exists()) {
 			resp.getWriter().print("File not found: " + car_photo);
 			return;
 		}
-		
+
 		// 3. 讓瀏覽器直接下載檔案
 		// 3.1. 設定網際網路媒體類型 MIME type
 		String mimeType = Files.probeContentType(file.toPath());
 		System.out.println("mimeType: " + mimeType);
-		if(mimeType == null) {
+		if (mimeType == null) {
 			// 若無法判斷 mime type, 則可以任意設定一個二進制檔案(強迫瀏覽器下載檔案)
 			mimeType = "application/oct-stream";
 		}
@@ -42,11 +42,10 @@ public class CarDownloadServlet extends HttpServlet {
 		String headerKey = "Content-Disposition";
 		String headerValue = String.format("attachment; filename=\"%s\"", file.getName());
 		resp.setHeader(headerKey, headerValue);
-		
+
 		// 4. 將圖檔傳給 client 端
 		Files.copy(file.toPath(), resp.getOutputStream());
-		
+
 	}
-	
-	
+
 }

@@ -5,11 +5,11 @@ public class Drink {
 	private String name;
 	private Integer price;
 	private Integer stock;
-	
+
 	public Drink() {
-		
+
 	}
-	
+
 	public Drink(Integer id, String name, Integer price, Integer stock) {
 		this.id = id;
 		this.name = name;
@@ -53,7 +53,5 @@ public class Drink {
 	public String toString() {
 		return "Drink [id=" + id + ", name=" + name + ", price=" + price + ", stock=" + stock + "]";
 	}
-	
-	
-	
+
 }

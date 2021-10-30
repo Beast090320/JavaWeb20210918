@@ -15,16 +15,16 @@ public class CycleServlet extends GenericServlet {
 		res.setContentType("text/html;charset=utf-8");
 		String radiu = req.getParameter("r");
 		PrintWriter out = res.getWriter();
-		if(radiu == null) {
+		if (radiu == null) {
 			out.print("Please input r !");
 		} else {
 			double r = Double.parseDouble(radiu);
 			double area = Math.PI * Math.pow(r, 2);
-			double volume = 4.0/3 * Math.PI * Math.pow(r, 3);
+			double volume = 4.0 / 3 * Math.PI * Math.pow(r, 3);
 			String result = String.format("area=%.2f volumn=%.2f", area, volume);
 			out.print(result);
 		}
-		
+
 	}
 
 }

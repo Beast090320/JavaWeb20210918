@@ -12,14 +12,14 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(name = "random", urlPatterns = {"/servlet/random", "/aaa/bbb/*"})
+@WebServlet(name = "random", urlPatterns = { "/servlet/random", "/aaa/bbb/*" })
 public class RandomServlet extends GenericServlet {
 	@Override
 	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
 		res.setContentType("text/html;charset=utf-8");
 		String amount = req.getParameter("n");
-		PrintWriter out = res.getWriter(); 
-		if(amount == null) {
+		PrintWriter out = res.getWriter();
+		if (amount == null) {
 			out.print("Please input n !");
 			return;
 		}

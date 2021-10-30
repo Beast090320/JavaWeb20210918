@@ -10,7 +10,7 @@ import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(value = {"/servlet/*"})
+@WebFilter(value = { "/servlet/*" })
 public class UTF8Filter extends HttpFilter {
 
 	@Override
@@ -21,5 +21,5 @@ public class UTF8Filter extends HttpFilter {
 		resp.setContentType("text/html;charset=utf-8");
 		chain.doFilter(req, resp);
 	}
-	
+
 }

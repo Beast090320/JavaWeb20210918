@@ -9,7 +9,7 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("/rest")
 public class MyRestApplication extends Application {
-	
+
 	// 註冊有哪些 rest 服務
 	@Override
 	public Set<Class<?>> getClasses() {
@@ -20,7 +20,5 @@ public class MyRestApplication extends Application {
 		classes.add(BookService.class); // BookService 是一個 rest 服務程式
 		return classes;
 	}
-	
-	
-	
+
 }

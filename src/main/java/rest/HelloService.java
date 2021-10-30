@@ -14,7 +14,7 @@ import javax.ws.rs.QueryParam;
 
 @Path("/hello")
 public class HelloService {
-	
+
 	// url: /rest/hello/now
 	@Path("/now")
 	@GET
@@ -22,7 +22,7 @@ public class HelloService {
 	public String time() {
 		return new Date().toString();
 	}
-	
+
 	// url: /rest/hello/lotto/1
 	// url: /rest/hello/lotto/5
 	@Path("/lotto/{num}")
@@ -31,12 +31,12 @@ public class HelloService {
 	public List<Integer> lotto(@PathParam("num") Integer num) {
 		Random r = new Random();
 		List<Integer> lottos = new LinkedList<>();
-		for(int i=0; i<num;i++) {
+		for (int i = 0; i < num; i++) {
 			lottos.add(r.nextInt(100));
 		}
 		return lottos;
 	}
-	
+
 	// url: /rest/hello/lucky?num=1
 	// url: /rest/hello/lucky?num=5
 	@Path("/lucky")
@@ -45,11 +45,10 @@ public class HelloService {
 	public List<Integer> lucky(@DefaultValue("0") @QueryParam("num") Integer num) {
 		Random r = new Random();
 		List<Integer> lottos = new LinkedList<>();
-		for(int i=0; i<num;i++) {
+		for (int i = 0; i < num; i++) {
 			lottos.add(r.nextInt(100));
 		}
 		return lottos;
 	}
-	
-	
+
 }
