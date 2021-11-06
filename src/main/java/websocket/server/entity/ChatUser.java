@@ -5,14 +5,14 @@ import java.util.Objects;
 import javax.websocket.Session;
 
 public class ChatUser {
-	private String nikename;
+	private String nickname;
 	private String data;
 	private Session session;
 	public String getNikename() {
-		return nikename;
+		return nickname;
 	}
 	public void setNikename(String nikename) {
-		this.nikename = nikename;
+		this.nickname = nikename;
 	}
 	public String getData() {
 		return data;
@@ -31,7 +31,7 @@ public class ChatUser {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(nikename, session);
+		return Objects.hash(nickname, session);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -42,11 +42,11 @@ public class ChatUser {
 		if (getClass() != obj.getClass())
 			return false;
 		ChatUser other = (ChatUser) obj;
-		return Objects.equals(nikename, other.nikename) && Objects.equals(session, other.session);
+		return Objects.equals(nickname, other.nickname) && Objects.equals(session, other.session);
 	}
 	@Override
 	public String toString() {
-		return "ChatUser [nikename=" + nikename + ", data=" + data + ", session=" + session + "]";
+		return "ChatUser [nikename=" + nickname + ", data=" + data + ", session=" + session + "]";
 	}
 	
 	
